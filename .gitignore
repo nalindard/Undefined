@@ -1,0 +1,11 @@
+build/bin
+node_modules
+frontend/dist
+frontend/.vscode/settings.json
+fonts
+
+*.txt
+*.env
+*.mp3
+*.mp4
+*.m4a

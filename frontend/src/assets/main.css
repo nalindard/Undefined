@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .title {
+        @apply text-7xl text-emerald-500 font-bold uppercase;
+    }
+}
+
+@layer utilities {}
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;800&display=swap'); */
+
+body {
+    font-family: 'Orbitron', sans-serif;
+}
+
+h4 {
+    font-family: 'Electrolize', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    /* opacity: 0; */
+    width: 8px;
+    background: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+    width: 8px;
+    background-color: rgba(0, 128, 142, 0.7);
+    opacity: 0.5;
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    opacity: 1;
+    background-color: rgba(0, 207, 224, 0.8);
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.c-bg-1 {
+    background-color: #00565a;
+    opacity: 0.5;
+    background: radial-gradient(circle, transparent 20%, #00565a 20%, #00565a 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #00565a 20%, #00565a 80%, transparent 80%, transparent) 10px 10px, linear-gradient(#1af2ff 0.8px, transparent 0.8px) 0 -0.4px, linear-gradient(90deg, #1af2ff 0.8px, #00565a 0.8px) -0.4px 0;
+    background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
+}
+
+.c-bg-2 {
+    background-color: #003235;
+    opacity: 0.5;
+    background-size: 4px 4px;
+    background-image: repeating-linear-gradient(135deg, #1af2ff 0, #1af2ff 0.4px, #003235 0, #003235 50%);
+}

@@ -1,0 +1,8 @@
+export const trendingList = ref([])
+export const history = ref([])
+export const likes = ref([])
+export const currentVideo = ref('dQw4w9WgXcQ')
+export const currentChannel = ref("")
+export const stream = ref(null)
+export const searchString = ref('')
+export const comments = ref()
