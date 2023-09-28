@@ -1,5 +1,7 @@
 <script setup>
 import useVideoStore from '@str/video_store'
+import SubscribeButtonVue from '@cmp/SubscribeButton.vue';
+import channelId from '@utl/channelId.js';
 
 const videoStore = useVideoStore()
 const { setCurrentChannel } = videoStore
@@ -13,16 +15,15 @@ const router = useRouter()
 const makeToChannel = () => 
 {
     const cnlId = props.data?.url.split('/').pop()
-    console.log("🚀 ~ file: SearchedChannel.vue:14 ~ cnlId:", cnlId)
     setCurrentChannel(cnlId, 'id')
-    router.push({name: 'channel'})
+    router.push({ name: 'channel' })
 
 }
 
 </script>
 
 <template>
-    <div class="bg-cyan-900 my-4 flex gap-2" v-wave @click="makeToChannel">
+    <div class="bg-base-200 bg-opacity-75 my-4 py-2 rounded-lg flex gap-2" v-wave @click="makeToChannel">
         <!-- {{ data || 'not passed' }} -->
 
         <!-- Channel Cover -->
@@ -37,11 +38,21 @@ const makeToChannel = () =>
                     :class="data?.uploaderVerified ? 'fa-certificate' : ''"></i></h2>
 
             <!-- Subscribers Amount -->
-            <h4 class="text-cyan-400 my-2">{{ data?.subscribers }} subscribers</h4>
+            <h4 class="text-base-content my-2">{{ data?.subscribers }} subscribers</h4>
 
-            <p class="text-xs text-cyan-400 line-clamp-4">{{ data?.description }}</p>
+            <p class="text-xs text-base-content line-clamp-4">{{ data?.description }}</p>
 
-            <button class="btn bg-cyan-200 rounded-full px-12 text-cyan-700 my-2" v-wave>SUBSCRIBE</button>
+            <!-- <button class="btn bg-base-100 rounded-full px-12 text-base-300 hover:text-primary my-2" v-wave>SUBSCRIBE</button> -->
+
+            <!-- Currently subscribe button not nahave as I want, so it's not clickeble here. -->
+            <!-- After fix, these two divs should be removed -->
+            <!-- Absolute div is on top of sub button to make it not clickeble here, easy 😉 -->
+            <div class="relative">
+                <div class="absolute w-full h-full"></div>
+
+                <SubscribeButtonVue :name="data?.name" :id="data?.url.split('/').pop()" :subs="data?.subscribers"
+                    :thumbnail="data?.thumbnail" :verified="data?.verified" />
+            </div>
         </div>
     </div>
 </template>

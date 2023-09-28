@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Russo+One&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Russo+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap'); */
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +8,7 @@
 
 @layer components {
     .title {
-        @apply text-7xl text-emerald-500 font-bold uppercase;
+        @apply text-7xl font-bold uppercase;
     }
 }
 
@@ -17,15 +18,21 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;800&display=swap'); */
 
 body {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Comfortaa', 'Orbitron', sans-serif;
+    background-color: #0f0e0e;
+    z-index: -100;
+    position: fixed;
 }
 
 h4 {
     font-family: 'Electrolize', sans-serif;
+    font-family: 'Comfortaa', 'Orbitron', sans-serif;
 }
 
 ::-webkit-scrollbar {
     width: 8px;
+    transition: all;
+    transition-duration: 1s;
 }
 
 ::-webkit-scrollbar-track {
@@ -36,14 +43,18 @@ h4 {
 
 ::-webkit-scrollbar-thumb {
     width: 8px;
-    background-color: rgba(0, 128, 142, 0.7);
+    background-color: rgba(142, 0, 0, 0.7);
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--b2) / var(--tw-bg-opacity));
     opacity: 0.5;
     border-radius: 100px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     opacity: 1;
-    background-color: rgba(0, 207, 224, 0.8);
+    background-color: rgba(224, 0, 0, 0.8);
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--pf) / var(--tw-bg-opacity));
 }
 
 ::-webkit-scrollbar-button {
@@ -64,4 +75,69 @@ h4 {
     opacity: 0.5;
     background-size: 4px 4px;
     background-image: repeating-linear-gradient(135deg, #1af2ff 0, #1af2ff 0.4px, #003235 0, #003235 50%);
+}
+
+.c-bg-3 {
+    background-color: #00323500;
+    opacity: 0.5;
+    background-size: 4px 4px;
+    background-image: repeating-linear-gradient(135deg, #565656 0, #565656 0.24px, #00000000 0, #00000000 50%);
+}
+
+
+/* list transitions */
+.list-enter-from {
+    opacity: 0;
+    transform: scale(0.8) translateX(-72%);
+    /* transform: translateX(-72%); */
+}
+
+/* .list-enter-to {
+    opacity: 1;
+    transform: scale(1);
+  } */
+.list-enter-active {
+    transition: all 0.4s ease;
+}
+
+/* .list-leave-from {
+    opacity: 1;
+    transform: scale(1);
+  } */
+.list-leave-to {
+    opacity: 0;
+    transform: scale(0.6);
+}
+
+.list-leave-active {
+    transition: all 0.4s ease;
+    position: absolute;
+    /* for move transition after item leaves */
+}
+
+.list-move {
+    transition: all 0.3s ease;
+}
+
+/* switch transitions */
+.switch-enter-from{ 
+    opacity: 0;
+    /* transform: scale(0.6) translateX(1000px); */
+    transform: translateX(127px);
+}
+
+.switch-leave-to {
+    opacity: 0;
+    transition: all 1s ease;
+    transform: translateX(1000px);
+}
+
+.switch-enter-active {
+    transition: all 0.5s ease;
+}
+
+.switch-leave-active {
+    transition: all 1s ease;
+    position: absolute;
+    width: 100%;
 }

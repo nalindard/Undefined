@@ -1,37 +1,75 @@
 <script setup>
+import useVideoStore from '@str/video_store'
+import { storeToRefs } from 'pinia'
 import TrendingVideo from '@cmp/TrendingVideo.vue';
+// import VerticalScroller from '@cmp/VerticalScroller.vue';
+import PageGap from '@cmp/app_components/PageGap.vue';
+import PageTitle from '@cmp/PageTitle.vue';
+import { desktopMod } from '../../config.mjs'
 
-const main = ref()
-const bar = ref()
+const videoStore = useVideoStore()
+const { feed } = storeToRefs(videoStore)
+const { updateFeed } = videoStore
 
-const x_s = () => {
-    main.value.style.fontSize = '6rem'
-    bar.value.style.scale = '100%'
-}
-const x_o = () => {
-    main.value.style.fontSize = '3rem'
-    bar.value.style.scale = '112%'
-}
-const x_e = () => {
-    main.value.style.fontSize = '6rem'
-    bar.value.style.scale = '100%'
-}
+const badNetwork = ref(false)
+
+
+onMounted(() => {
+    try {
+        updateFeed()
+    } catch (error) {
+        console.log(error);
+    }
+
+    setTimeout(() => {
+        badNetwork.value = feed.value?.length < 1 ? true : false
+    }, 10000);
+
+    // ------------------------RELOAD APP------------------------
+    // WindowReloadApp()
+})
+
 </script>
 
 <template>
-    <main class="w-full h-full px-4 pt-80 overflow-y-scroll overflow-x-hidden">
-        <h2 ref="main" class="text-8xl pb-7 font-bold transition-all duration-700">Welcome Home...!</h2>
-        <div v-dragscroll ref="bar" v-on:dragscrollstart="x_s" v-on:dragscrollmove="x_o" v-on:dragscrollend="x_e"
-            class="w-full mb-7 p-7 bg-black bg-opacity-40 overflow-hidden cursor-move rounded-lg flex justify-center items-center  transition-all duration-700">
-            <div class="aspect-video h-52 bg-slate-600 mx-7 cursor-auto" v-for="x in Array.from(Array(16).keys())"></div>
-        </div>
-        <div class="w-full  grid grid-cols-4 place-items-center">
-            <TrendingVideo v-for="x in Array.from(Array(16).keys())" :shimmer="true" />
-        </div>
+    <main class="w-full h-full overflow-y-scroll overflow-x-hidden">
+        <!-- <div class="h-96"></div> -->
+        <PageGap />
+        <!-- <h2
+            class="title text-primary bg-base-300 hover:bg-opacity-20 duration-200 sticky top-0 py-7 backdrop-blur-xl z-[2] px-2">
+            Your feed
+        </h2> -->
+
+        <PageTitle>
+            Your feed
+        </PageTitle>
+
+        <h2 v-show="badNetwork" class="text-4xl font-semibold text-primary-focus pl-4 my-12">
+            No connection ?
+        </h2>
+        <!-- <div>
+            <VerticalScroller :show-title="true"></VerticalScroller>
+        </div> -->
+
+        <!-- <keep-alive> -->
+            <div class="w-full">
+                <h4 v-show="feed.length < 1" class="text-xl pl-4">Sub some channels to have a feed !</h4>
+                <transition-group tag="ul" name="list" appear class="w-full grid 2xl:grid-cols-5 lg:grid-cols-4 sm:grid-cols-2 md:sm:grid-cols-3 justify-items-center px-2 pt-4">
+                    <TrendingVideo v-show="feed.length < 1" v-for="x in Array.from(Array(16).keys())" :shimmer="true" :key="Math.random()"/>
+                    <TrendingVideo v-for="x in feed" :data="x" :showProfilePic="true" :key="Math.random()"/>
+                </transition-group>
+            </div>
+        <!-- </keep-alive> -->
+
+        <!-- <div>{{ feed }}</div> -->
     </main>
 </template>
 
 <style>
+* {
+    user-select: none;
+}
+
 h1 {
     font-size: 72px;
     background: linear-gradient(to right, rgb(127, 229, 255), rgb(0, 174, 227));
@@ -51,4 +89,6 @@ h1 {
     display: none;
     /* position: absolute; */
     /* background: red; */
-}</style>
+}
+
+</style>

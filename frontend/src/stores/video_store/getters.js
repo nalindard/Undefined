@@ -1,6 +1,6 @@
-import { trendingList, history, likes, currentVideo, comments, stream } from './state'
+import { trendingList, history, likes, currentVideo, comments, stream, mediaLength } from './state'
 
-export const getVidId = computed(() => currentVideo.value.split('=')[1])
+export const getVidId = computed(() => currentVideo.value?.split('=')[1])
 
 export const getComments = computed(() => comments.value?.comments)
 
@@ -18,4 +18,10 @@ export const getAudioFiles = computed(() =>
 {
     if (stream.value?.audioStreams === undefined) return ['loading']
     return stream.value?.audioStreams.filter(a => a.mimeType === "audio/webm")
+})
+
+export const getMediaLength = computed(() =>
+{
+    // return getVideoFiles.value[0]?.contentLength
+    return mediaLength.value
 })

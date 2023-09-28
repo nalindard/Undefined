@@ -1,80 +1,87 @@
 <script setup>
 import useVideoStore from '@str/video_store'
 import { storeToRefs } from 'pinia';
+import SubscribeButtonVue from '@cmp/SubscribeButton.vue';
 
 const videoStore = useVideoStore()
-const { currentVideo, getVidId, stream } = storeToRefs(videoStore)
+const { currentVideo, getVidId, stream, currentChannel } = storeToRefs(videoStore)
 const { setStream } = videoStore
 
 onMounted(() =>
 {
-    console.log(`Video details field Mounted - 🚞🌋`);
+    // console.log(`Video details field Mounted - 🚞🌋`);
     if (stream.value === null) setStream(getVidId.value)
-    console.log("🚀 ~ file: VideoDetails.vue:13 ~ getVidId:", getVidId.value)
+    // console.log("🚀 ~ file: VideoDetails.vue:13 ~ getVidId:", getVidId.value)
 })
 
 </script>
 
 <template>
-    <div class="w-full py-2 flex flex-col">
+    <div class="w-full p-2 flex flex-col">
         <!-- Title -->
         <h2 class="text-xl font-semibold py-2">{{ stream?.title || 'loading...' }}</h2>
 
         <!-- Channel && video status -->
-        <div class="flex bg-cyan-900 bg-opacity-25 justify-between items-center">
-            <div class="flex gap-2">
+        <div class="flex  justify-between items-center">
+            <div class="flex flex-grow gap-2">
                 <!-- Channel Cover -->
-                <div class="w-1/5 p-2">
-                    <img :src="stream?.uploaderAvatar || '#'"
-                        alt="channel-cover" loading="lazy" class="rounded-full w-full">
+                <div class="w-1/5 pr-4">
+                    <img :src="stream?.uploaderAvatar || '#'" alt="channel-cover" loading="lazy"
+                        class="rounded-full w-full">
                 </div>
 
                 <!-- The Rest -->
                 <div class="w-full text-sm flex items-center">
                     <!-- Name && Verification Status -->
-                    <span>
-                        <h2 class="text-xl text-cyan-100 font-bold"> {{ stream?.uploader || 'loading...'}}<i class="fa-solid fa-xs 🔒 mx-2"
-                                :class="true ? 'fa-certificate' : ''"></i></h2>
-                        <h4 class="text-cyan-400 my-2">{{ stream?.uploaderSubscriberCount || 'xxxx' }}subscribers</h4>
+                    <span class="pr-2">
+                        <h2 class="text-lg text-base-100 font-bold"> {{ stream?.uploader || 'loading...' }}<i
+                                class="fa-solid fa-xs 🔒 mx-2" :class="true ? 'fa-certificate' : ''"></i></h2>
+                        <h4 class="text-base-content my-2">{{ stream?.uploaderSubscriberCount || 'xxxx' }}subscribers</h4>
                         <!-- <h4 class="text-cyan-400 my-2">{{ stream?.views || 'xxxx' }}views</h4> -->
                     </span>
 
                     <!-- Subscribers Amount -->
-                    <button class="btn btn-sm bg-cyan-200 rounded-full px-4 text-cyan-700 my-2"
-                        v-wave>SUBSCRIBE</button>
+                    <!-- <button class="btn btn-sm rounded-full px-4 text-base-100 my-2" v-wave>SUBSCRIBE</button> -->
+                    <SubscribeButtonVue :name="currentChannel?.name" :id="currentChannel?.id"
+                        :subs="currentChannel?.subscriberCount" :thumbnail="currentChannel?.avatarUrl"
+                        :verified="currentChannel?.verified" />
                 </div>
             </div>
 
-            <span class="gap-2 text-cyan-400">
+            <span class="gap-2 text-primary">
                 <span class="join">
-                    <button class="btn bg-cyan-700 bg-opacity-25 border-cyan-400 join-item"><i class="ri-thumb-up-line"></i>{{ stream?.likes || '' }} LIKES</button>
-                    <button class="btn bg-cyan-700 bg-opacity-25 border-cyan-400 join-item"><i class="ri-thumb-down-line"></i>{{ stream?.dislikes || '' }} DISLIKES</button>
+                    <button class="btn bg-opacity-50 hover:border hover:border-primary hover:text-primary join-item"><i
+                            class="ri-thumb-up-line"></i>{{ stream?.likes || '' }}</button>
+                    <button class="btn bg-opacity-50 hover:border hover:border-primary hover:text-primary join-item"><i
+                            class="ri-thumb-down-line"></i>{{ stream?.dislikes || '' }}</button>
                 </span>
-                <button class="btn bg-cyan-700 bg-opacity-25 border-cyan-400 ml-1"><i class="ri-share-forward-line"></i>SHARE</button>
-                <button class="btn bg-cyan-700 bg-opacity-25 border-cyan-400 ml-1"><i class="ri-save-line"></i>SAVE</button>
+                <button class="btn bg-opacity-50 hover:border hover:border-primary hover:text-primary ml-1"><i
+                        class="ri-share-forward-line"></i>SHARE</button>
+                <button class="btn bg-opacity-50 hover:border hover:border-primary hover:text-primary ml-1"><i
+                        class="ri-save-line"></i>SAVE</button>
             </span>
         </div>
 
         <!-- Description -->
-        <div class="collapse text-cyan-50">
-        <input type="checkbox" />
+        <div class="collapse text-base-content rounded-lg">
+            <input type="checkbox" />
             <!-- Data -->
-            <span class="flex w-full justify-between items-center bg-cyan-700 bg-opacity-50 py-2 text-cyan-100 my-2 collapse-title">
+            <span
+                class="flex w-full justify-between items-center py-2  my-2 collapse-title bg-base-200 bg-opacity-50 rounded-lg">
                 <h2>{{ stream?.views || 'xxxx' }}views</h2>
                 <h2>{{ stream?.uploadDate }}</h2>
                 <h2>{{ stream?.category }}</h2>
             </span>
-            <!-- Tags -->
-            <span class="w-full  my-2">
-                <p class="rounded border border-cyan-400 p-2">
-                    {{ stream?.tags }}
-                </p>
-            </span>
             <!-- Description -->
-            <article class="bg-cyan-950 bg-opacity-40 text-sm collapse-content">
-                    {{ stream?.description || 'No Description found' }}
+            <article class="text-xs bg-base-200 bg-opacity-50 collapse-content pt-2 text-base-content">
+                {{ stream?.description || 'No Description found' }}
+                <!-- Tags -->
+                <span class="w-full bg-base-200 bg-opacity-50 my-2 rounded-none">
+                    <p class="bg-base-300 bg-opacity-50 mt-2 p-2">
+                        {{ stream?.tags }}
+                    </p>
+                </span>
             </article>
-
         </div>
     </div>
 </template>

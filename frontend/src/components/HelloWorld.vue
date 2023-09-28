@@ -1,51 +1,64 @@
 <script setup>
-import {reactive} from 'vue'
-import {Greet} from '../../wailsjs/go/main/App'
+import { reactive } from 'vue'
+import { Greet } from '../../wailsjs/go/main/App'
 
 const data = reactive({
   name: "",
   resultText: "Please enter your name below 👇",
 })
 
-function greet() {
-  Greet(data.name).then(result => {
+function greet()
+{
+  Greet(data.name).then(result =>
+  {
     data.resultText = result
   })
 }
 
-function cls(){
+function cls()
+{
   window.runtime.Quit()
 }
-function min(){
+function min()
+{
   window.runtime.Show()
 }
-function hid(){
+function hid()
+{
   window.runtime.Hide()
 }
 
-function maximiz(){
+function maximiz()
+{
   window.runtime.WindowMaximise()
 }
-function unMaximiz(){
+function unMaximiz()
+{
   window.runtime.WindowUnmaximise()
 }
-function minimiz(){
+function minimiz()
+{
   window.runtime.WindowMinimise()
 }
-function unMinimiz(){
+function unMinimiz()
+{
   window.runtime.WindowUnminimise()
 }
-function fulls(){
+function fulls()
+{
   window.runtime.WindowFullscreen()
 }
-function unful(){
+function unful()
+{
   window.runtime.WindowUnfullscreen()
 }
-function center(){
+function center()
+{
   window.runtime.WindowCenter()
 }
-function toggle_max(){
-  window.runtime.WindowToggleMaximise()  
+function toggle_max()
+{
+  window.runtime.WindowToggleMaximise()
 }
 
 </script>
@@ -54,7 +67,7 @@ function toggle_max(){
   <main>
     <div id="result" class="result">{{ data.resultText }}</div>
     <div id="input" class="input-box">
-      <input id="name" v-model="data.name" autocomplete="off" class="input" type="text"/>
+      <input id="name" v-model="data.name" autocomplete="off" class="input" type="text" />
       <div id="x"></div>
       <button class="btn" @click="greet">Greet</button>
       <button class="btn" @click="min">Show</button>
@@ -74,17 +87,19 @@ function toggle_max(){
 </template>
 
 <style scoped>
-  #x{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-  }
-  .btn{
-    padding: 7px 12px;
-    font-size: 12px;
-    background-color: purple;
-  }
+#x {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.btn {
+  padding: 7px 12px;
+  font-size: 12px;
+  background-color: purple;
+}
+
 .result {
   height: 20px;
   line-height: 20px;

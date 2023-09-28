@@ -1,68 +1,97 @@
-<script setup></script>
+<script setup>
+import VerticalScroller from '@cmp/VerticalScroller.vue';
+import ChannelPreview from '@cmp/ChannelPreview.vue';
+import PageGap from '@cmp/app_components/PageGap.vue';
+// import TrendingVideo from '../components/TrendingVideo.vue';
+import PageTitle from '@cmp/PageTitle.vue';
+import {
+    checkMemory,
+    getMemory,
+} from '@utl/sessionStorage'
+
+const subs = ref([])
+
+onMounted(() => {
+    if (checkMemory('subbedChannelsList') && getMemory('subbedChannelsList')?.length > 0) {
+        subs.value = getMemory('subbedChannelsList')
+    } else {
+        subs.value = [ {name: ''},{name: ''},{name: ''},{name: ''},{name: ''},{name: ''},{name: ''},{name: ''},]
+    }
+})
+
+</script>
 
 <template>
-    <!-- <h2 class="title">User</h2> -->
-    <div class="stats shadow">
-        <div class="stat">
-            <div class="stat-figure text-secondary">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    class="inline-block w-8 h-8 stroke-current">
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
+    <div class="w-full h-full overflow-scroll overflow-x-hidden">
+        <PageGap />
+
+        <!-- <h2 class="title">User</h2> -->
+        <PageTitle>
+            User
+        </PageTitle>
+        <div class="flex w-full justify-between">
+            <!-- <h2
+                class="title w-full text-primary bg-base-300 hover:bg-opacity-20 duration-200 sticky top-0 py-7 backdrop-blur-xl z-[2] px-2">
+                User</h2> -->
+            <div class="avatar placeholder hidden">
+                <div class="bg-neutral-focus text-neutral-content rounded-full w-24 h-24">
+                    <span class="text-3xl">K</span>
+                </div>
             </div>
-            <div class="stat-title">Downloads</div>
-            <div class="stat-value">31K</div>
-            <div class="stat-desc">Jan 1st - Feb 1st</div>
         </div>
 
-        <div class="stat">
-            <div class="stat-figure text-secondary">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    class="inline-block w-8 h-8 stroke-current">
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-                </svg>
-            </div>
-            <div class="stat-title">New Users</div>
-            <div class="stat-value">4,200</div>
-            <div class="stat-desc">↗︎ 400 (22%)</div>
-        </div>
+        <div class="pt-20"></div>
 
-        <div class="stat">
-            <div class="stat-figure text-secondary">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    class="inline-block w-8 h-8 stroke-current">
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
-                </svg>
+        <!-- Sign-in warning ! -->
+        <transition name="switch_" mode="out-in" appear class="hidden">
+            <div class="px-4 w-1/2">
+                <div class="alert alert-warning">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    <span>Warning: Backend isn't configured yet ! See anyway ?</span>
+                </div>
             </div>
-            <div class="stat-title">New Registers</div>
-            <div class="stat-value">1,200</div>
-            <div class="stat-desc">↘︎ 90 (14%)</div>
-        </div>
+        </transition>
 
+
+        <!-- ----------Likes---------- -->
         <!-- ----------Bookmarks---------- -->
         <!-- ----------Playlists---------- -->
-        <!-- ----------Likes---------- -->
         <!-- ----------History---------- -->
+        <div class="pt-7 pl-4">
+            <!-- {{ subs }} -->
+            <div>
+                <VerticalScroller :title="'subscribes'" :show-title="true">
+                    <!-- <ChannelPreview :channel="{}" v-for="x in Array.from(Array(20).keys())" /> -->
+                    <transition-group name="list" appear>
+                        <ChannelPreview :channel="c" v-for="c in subs" :key="c?.name" />
+                    </transition-group>
+                </VerticalScroller>
+            </div>
+            <div>
+                <VerticalScroller :title="'likes'" :show-title="true">
+                    <!-- <TrendingVideo v-for="x in Array.from(Array(20).keys())" :data="video" :shimmer="true" :show-profile-pic="true"/> -->
+                </VerticalScroller>
+            </div>
+            <div>
+                <VerticalScroller :title="'history'" :show-title="true"></VerticalScroller>
+            </div>
+        </div>
     </div>
 </template>
+
+<style scoped>
+.switch_-enter-from {
+    opacity: 0;
+    /* animation-delay: 1s; */
+    transform: scale(0);
+    /* transform: translateX(127px); */
+}
+
+.switch_-enter-active {
+    transition: all 0.4s linear;
+}
+</style>

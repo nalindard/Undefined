@@ -1,6 +1,6 @@
 <script setup>
 import SearchBar from '@cmp/search_components/SearchBar.vue'
-import RecommendedLine from '@cmp/RecommendedLine.vue'
+import RecommendedLine from '@cmp/recommended_components/RecommendedLine.vue'
 import fetchFromAPI from '@/utils/fetchFrom.js'
 import SearchedVideo from '@cmp/search_components/SearchedVideo.vue'
 import SearchedChannel from '@cmp/search_components/SearchedChannel.vue'
@@ -11,66 +11,68 @@ import useVideoStore from '@str/video_store'
 import apiEndPoints from '@/constants/endpoints.js'
 
 const videoStore = useVideoStore()
-const {setSearchString} = videoStore
+const { setSearchString } = videoStore
 
 const searchSuggestions = ref(['1', '2', '3', '4'])
 const filter = ref('all')
 const searchResults = ref({})
 const showSuggestions = ref(false)
 
-const channels = computed(()=>{
+const channels = computed(() =>
+{
     return searchResults.value.items?.filter(x => x.type === 'channel')
 })
-const videos = computed(()=>{
+const videos = computed(() =>
+{
     return searchResults.value.items?.filter(x => x.type === 'stream')
 })
 
-const search = async (input) => {
+const search = async (input) =>
+{
     // console.log(input)
     // searchSuggestions.value = await fetchFromAPI(`suggestions?query=${input}`)
     searchSuggestions.value = await fetchFromAPI(apiEndPoints.suggestions(input))
     showSuggestions.value = true
 }
 
-const huntResults = async (input) => {
+const huntResults = async (input) =>
+{
     console.log(`Hunting for the: ${input}`);
     showSuggestions.value = false
     searchResults.value = await fetchFromAPI(apiEndPoints.search(input, filter.value))
-    
-// https://pipedapi.kavin.rocks/search?q=lion+kolla&filter=all
-// https://pipedapi.kavin.rocks/search?q=lion+kolla+live&filter=all
-// https://pipedapi.kavin.rocks/search?q=lion+kolla+live&filter=videos
-// https://pipedapi.kavin.rocks/search?q=lion+kolla+live&filter=channels
-// https://pipedapi.kavin.rocks/search?q=lion+kolla+live&filter=playlists
 }
 
-watch(()=>searchSuggestions.value, ()=> {
-    if(searchSuggestions.value?.code == 'ERR_BAD_REQUEST') showSuggestions.value =false
+watch(() => searchSuggestions.value, () =>
+{
+    if (searchSuggestions.value?.code == 'ERR_BAD_REQUEST') showSuggestions.value = false
 })
 
-// https://pipedapi.kavin.rocks/suggestions?query=lion
 </script>
 
 <template>
-    <div class="drawer-side max-h-screen overflow-hidden duration-75">
-        <label for="my-drawer-4" class="drawer-overlay" v-wave></label>
-        <div
-            class="p-4 w-[50vw] h-full overflow-hidden bg-cyan-600 bg-opacity-20 backdrop-blur-lg border-l-4 border-l-cyan-500 shadow-cyan-300 pt-7">
+    <div class="drawer-side max-h-screen overflow-hidden">
+        <label for="my-drawer-4" class="drawer-overlay bg-primary" v-wave></label>
+        <div class="p-4 w-[50vw] h-full overflow-hidden bg-base-300 bg-opacity-75 backdrop-blur pt-7">
             <!-- Sidebar content here -->
 
-            <SearchBar @valueChange="search" @getAction="huntResults"/>
+            <SearchBar @valueChange="search" @getAction="huntResults" />
 
             <!-- Filters feed -->
             <div class="flex justify-between py-4">
-                <label v-wave class="label px-8"><input @click="filter = 'all'; console.log('all')" type="radio" name="search-filter-choice" class="radio radio-accent mr-4" checked>All</label>
-                <label v-wave class="label px-8"><input @click="filter = 'videos'; console.log('videos')" type="radio" name="search-filter-choice" class="radio radio-accent mr-4">Videos</label>
-                <label v-wave class="label px-8"><input @click="filter = 'channels'; console.log('channels')" type="radio" name="search-filter-choice" class="radio radio-accent mr-4">Channels</label>
-                <label v-wave class="label px-8"><input @click="filter = 'playlist'; console.log('playlist')" type="radio" name="search-filter-choice" class="radio radio-accent mr-4">Playlist</label>
+                <label v-wave class="label px-8"><input @click="filter = 'all'; console.log('all')" type="radio"
+                        name="search-filter-choice" class="radio radio-primary mr-4" checked>All</label>
+                <label v-wave class="label px-8"><input @click="filter = 'videos'; console.log('videos')" type="radio"
+                        name="search-filter-choice" class="radio radio-primary mr-4">Videos</label>
+                <label v-wave class="label px-8"><input @click="filter = 'channels'; console.log('channels')" type="radio"
+                        name="search-filter-choice" class="radio radio-primary mr-4">Channels</label>
+                <label v-wave class="label px-8"><input @click="filter = 'playlist'; console.log('playlist')" type="radio"
+                        name="search-filter-choice" class="radio radio-primary mr-4">Playlist</label>
             </div>
 
 
             <!-- SEARCH SUGGESTIONS -->
-            <ul class="menu bg-cyan-700 bg-opacity-40 rounded-box w-full overflow-hidden transition-all duration-500" :class="showSuggestions ? '': 'h-0 w-0 p-0'">
+            <ul class="menu bg-base-content bg-opacity-10 rounded-box w-full overflow-hidden transition-all duration-500"
+                :class="showSuggestions ? '' : 'h-0 w-0 p-0'">
                 <li v-for="s in searchSuggestions" class="w-full">
                     <a @click="setSearchString(s)">{{ s }}</a>
                 </li>
@@ -96,10 +98,12 @@ watch(()=>searchSuggestions.value, ()=> {
                         <h5>Subscribers: {{  }}</h5>
                         <h5>Videos: {{  }}</h5>
                     </div> -->
-                    <SearchedChannel v-for="channel in channels" :data="channel"/>
+                    <transition-group tag="ul" name="list" appear>
+                        <SearchedChannel v-for="channel in channels" :data="channel" :key="channel?.name" />
+                    </transition-group>
                 </div>
 
-                <hr class="w-full border-t-4 my-7 border-t-cyan-400 border-double rounded-full">
+                <hr class="w-full border-t-4 my-7 border-primary rounded-full">
 
                 <div class="text-emerald-500 font-bold text-2xl">
                     <!-- Videos {{ videos }}  -->
@@ -113,7 +117,10 @@ watch(()=>searchSuggestions.value, ()=> {
                         <h4>Duration: {{  }}</h4>
                         <h4>Views: {{  }}</h4>
                     </div> -->
-                    <SearchedVideo v-for="video in videos" :data="video"/>
+
+                    <transition-group tag="ul" name="list" appear>
+                        <SearchedVideo v-for="video in videos" :data="video" :key="video?.url" />
+                    </transition-group>
                 </div>
             </div>
         </div>

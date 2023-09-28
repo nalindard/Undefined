@@ -1,4 +1,5 @@
 import './assets/main.css'
+// import './utils/testing.js'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -14,10 +15,11 @@ app.use(createPinia())
 app.use(router)
 app.use(VWave,
     {
-        color: 'cyan',
+        color: 'hsl(var(--p) / var(--tw-bg-opacity))',
         initialOpacity: 0.5,
         easing: 'ease-in',
     })
 app.use(VueDragscroll)
 
 app.mount('#app')
+// npm i vue-slicksort

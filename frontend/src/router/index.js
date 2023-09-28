@@ -9,10 +9,15 @@ const router = createRouter({
             name: 'home',
             component: HomeView,
         },
+        // {
+        //     path: '/about',
+        //     name: 'about',
+        //     component: () => import('@vws/AboutView.vue'),
+        // },
         {
-            path: '/about',
-            name: 'about',
-            component: () => import('@vws/AboutView.vue'),
+            path: '/settings',
+            name: 'settings',
+            component: () => import('@vws/SettingsView.vue'),
         },
         {
             path: '/trending',
@@ -33,6 +38,11 @@ const router = createRouter({
             path: '/user',
             name: 'user',
             component: () => import('@vws/UserProfileView.vue'),
+        },
+        {
+            path: '/account',
+            name: 'account',
+            component: () => import('@vws/AccountView.vue'),
         },
         {
             path: '/zenzone',

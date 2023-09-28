@@ -1,5 +1,11 @@
+import { getMemory } from '@utl/sessionStorage'
+
+
+export const serverCount = 2
+
+
 const apiEndPoints = {
-    trending: 'trending?region=LK',
+    trending: `trending?region=${getMemory('country') || 'LK'}`,
     // streams: '/streams/:videoId',
     streams: (id) => `streams/${id}`,
     // comments: '/comments/:videoId',
@@ -17,6 +23,11 @@ const apiEndPoints = {
         const sq = q.replace(/\s/g, "+")
         return `search?q=${sq}&filter=${f}`
     },
+    feed: (channels) =>
+    {
+        // https://pipedapi.kavin.rocks/feed/unauthenticated?channels=UCVNKhUY0DtYhpC7FIHrPBiQ%2CUCX1VsfjqUoH5pXyk_Ds4vjA
+        return `feed/unauthenticated?channels=${channels}`
+    }
 }
 
 export default apiEndPoints

@@ -1,7 +1,8 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
-const useUiStore = defineStore('ui', () => {
+const useUiStore = defineStore('ui', () =>
+{
     const pages = ref([
         // { name: 'home', icon: 'fa-solid fa-house' },
         { name: 'home', tooltip: 'home', icon: 'ri-home-3-line' },
@@ -16,7 +17,8 @@ const useUiStore = defineStore('ui', () => {
         // { name: 'user', icon: 'fa-solid fa-user' },
         { name: 'user', tooltip: 'user', icon: 'ri-user-4-line' },
         // { name: 'about', icon: 'fa-solid fa-gear' },
-        { name: 'about', tooltip: 'about', icon: 'ri-settings-line' },
+        // { name: 'about', tooltip: 'about', icon: 'ri-settings-line' },
+        { name: 'settings', tooltip: 'settings', icon: 'ri-settings-line' },
     ])
 
     const searchDraw = ref(false)
@@ -30,3 +32,15 @@ const useUiStore = defineStore('ui', () => {
 })
 
 export default useUiStore
+
+// const store = reactive({
+//     // state,
+//     count: 0,
+
+//     // actions,
+//     increment(){
+//         this.count++
+//     }
+// })
+
+// export default store

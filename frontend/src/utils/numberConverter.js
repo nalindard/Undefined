@@ -23,3 +23,4 @@ const easyNumber = (value) =>
 }
 
 export default easyNumber;
+

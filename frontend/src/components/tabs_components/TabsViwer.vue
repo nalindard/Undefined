@@ -11,24 +11,26 @@ const visibleSlide = ref('home')
 </script>
 
 <template>
-    <div class="w-full flex flex-col overflow-hidden mt-4">
+    <div class="w-full flex flex-col overflow-hidden">
         <!-- {{ slides }} -->
         <!-- Headers -->
-        <div class="w-full flex">
+        <div class="w-full flex tabs tabs-boxed bg-base-300 rounded-none">
             <!-- <slot name="tab-names">
                 Fallbacked here !
             </slot> -->
-            <TabHeader :name="key" @click="visibleSlide=key" v-for="(value, key) in slides" :class="visibleSlide === key? 'tab-active': ''"/>
+            <TabHeader :name="key" @click="visibleSlide = key" v-for="(value, key) in slides"
+                :class="visibleSlide === key ? 'tab-active' : ''" />
         </div>
 
-        <hr class="w-full border-t-8 border-cyan-400 my-2 hidden">
+        <!-- <hr class="w-full border-t-8 border-cyan-400 my-2"> -->
 
         <!-- Slides -->
-        <div class="w-full flex gap-2">
+        <div class="w-full flex gap-2 pt-2">
             <!-- <slot name="tab-contents">
                 Fallbacked here !
             </slot> -->
-            <TabSlide :data="value" :content="key === 'home' ? 'videos' : 'none'" v-for="(value, key) in slides" v-show="visibleSlide === key"/>
+            <TabSlide :data="value" :content="key === 'home' ? 'videos' : 'none'" v-for="(value, key) in slides"
+                v-show="visibleSlide === key" />
         </div>
     </div>
 </template>

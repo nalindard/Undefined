@@ -6,7 +6,8 @@ const videoStore = useVideoStore()
 const { stream, getVidId, getVideoFiles, getAudioFiles } = storeToRefs(videoStore)
 const { setStream } = videoStore
 
-onMounted(() => {
+onMounted(() =>
+{
     console.log(`Master Player Mounted - 🚞🌋`);
     if (stream.value === null) setStream(getVidId.value)
 
@@ -18,15 +19,17 @@ onMounted(() => {
     //         loading.value = false
     //     }, 500)
     // })
-    video_player.value.addEventListener("waiting", () => {
+    video_player.value.addEventListener("waiting", () =>
+    {
         waiting.value = true
     });
-    audio_player.value.addEventListener("waiting", () => {
+    audio_player.value.addEventListener("waiting", () =>
+    {
         waiting.value = true
     });
 })
 
-const dev_mod = ref(false)
+const dev_mod = ref(true)
 
 const video_player = ref()
 const audio_player = ref()
@@ -40,35 +43,43 @@ const current_time = ref()
 const speed_range = [0.25, 0.50, 0.75, 1.00, 1.25, 1.50, 1.75, 2.00]
 let src_loaded = false
 
-const vid_quality_range = computed(() => {
+const vid_quality_range = computed(() =>
+{
     return getVideoFiles.value?.map(q => q.quality)
 })
-const aud_quality_range = computed(() => {
+const aud_quality_range = computed(() =>
+{
     return getAudioFiles.value?.map(q => q.quality)
 })
 
-const f = (x) => {
+const f = (x) =>
+{
     // if (x === 'q') console.log(v_quality.value.value);
     // if (x === 'q') console.log(a_quality.value.value);
     // if (x === 's') console.log(speed.value.value);
 }
 
 
-const set_sources = () => {
+const set_sources = () =>
+{
     video_player.value.src = getVideoFiles.value?.filter(vid => vid.quality === v_quality.value)[0].url
     audio_player.value.src = getAudioFiles.value?.filter(aud => aud.quality === a_quality.value)[0].url
     src_loaded = true
 }
 
-const play_or_pause = () => {
-    if (!src_loaded) {
+const play_or_pause = () =>
+{
+    if (!src_loaded)
+    {
         set_sources()
     }
-    if (!playing.value) {
+    if (!playing.value)
+    {
         video_player.value.play()
         audio_player.value.play()
         playing.value = true
-    } else {
+    } else
+    {
         video_player.value.pause()
         audio_player.value.pause()
         playing.value = false

@@ -31,9 +31,11 @@ export default defineConfig({
             '@cmp': fileURLToPath(new URL('./src/components', import.meta.url)),
             '@vws': fileURLToPath(new URL('./src/views', import.meta.url)),
             '@icn': fileURLToPath(new URL('./src/components/icons', import.meta.url)),
+            '@utl': fileURLToPath(new URL('./src/utils', import.meta.url)),
+            '@cns': fileURLToPath(new URL('./src/constants', import.meta.url)),
         },
     },
     server: {
-        // host: "127.0.0.1",
+        host: "127.0.0.1",
     }
 })

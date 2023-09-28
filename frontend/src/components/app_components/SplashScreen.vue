@@ -4,7 +4,8 @@ const emits = defineEmits(['continue'])
 const self = ref()
 const btn = ref()
 const name = null
-const proceed = () => {
+const proceed = () =>
+{
     btn.value.style.scale = '250%'
     btn.value.style.opacity = '00'
     self.value.classList.add('bye')
@@ -14,16 +15,16 @@ const proceed = () => {
 </script>
 
 <template>
-    <div ref="self" class="w-full h-full  grid place-items-center duration-500 ease-linear bg-black bg-opacity-70">
+    <div ref="self" class="w-full h-full  grid place-items-center duration-500 ease-linear bg-base-300 bg-opacity-50">
         <div class=" flex flex-col justify-center items-center">
             <!-- Logo -->
             <div>
-                <h2 class="uppercase">{{ name || 'undifiend' }}</h2>
+                <h2 class="uppercase font-extrabold">{{ name || 'undifiend' }}</h2>
             </div>
 
             <!-- Continue -->
             <button ref="btn" @click="proceed"
-                class="uppercase text-4xl rounded-full  overflow-hidden transition-all duration-500 hover:opacity-100 hover:scale-105 p-7 border-4 mt-16 border-cyan-400 opacity-40  shadow-2xl shadow-cyan-400">
+                class="uppercase text-4xl rounded-full  overflow-hidden transition-all duration-500 hover:opacity-100 hover:scale-105 p-7 border-4 mt-16 border-primary opacity-40  shadow-2xl shadow-primary">
                 <ContinueIcon class="" />
             </button>
         </div>
@@ -47,7 +48,8 @@ h2 {
     transition: 400ms;
 
     font-size: 5em;
-    background: linear-gradient(to right, rgb(71, 218, 255), rgb(21, 234, 191));
+    /* background: linear-gradient(to right, rgb(71, 218, 255), rgb(21, 234, 191)); */
+    background: linear-gradient(to right, hsl(var(--p)), hsl(var(--s)));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -62,7 +64,7 @@ h2:hover {
 }
 
 button {
-    box-shadow: 0px 0px 50px 1px cyan;
+    box-shadow: 0px 0px 50px 1px hsl(var(--p));
 }
 
 .bye {
@@ -70,7 +72,12 @@ button {
 }
 
 @keyframes fade {
-    from{opacity: 1;}
-    to{opacity: 0;}
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 </style>
