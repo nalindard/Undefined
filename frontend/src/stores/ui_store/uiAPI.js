@@ -1,6 +1,6 @@
 const ui = reactive({
     // state,
-    page_gap: true,
+    page_gap: false,
     themes: [
         { name: 'light', theme: 'light' },
         { name: 'dark', theme: 'dark' },
