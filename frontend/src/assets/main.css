@@ -10,6 +10,9 @@
     .title {
         @apply text-7xl font-bold uppercase;
     }
+    .text-2 {
+        @apply text-base-100 text-opacity-75
+    }
 }
 
 @layer utilities {}

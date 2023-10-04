@@ -26,7 +26,7 @@ const { currentChannel } = storeToRefs(videoStore)
 
                 <!-- Status section -->
                 <transition name="switch" mode="out-in" appear>
-                        <div class="w-full h-1/4 sticky top-0 flex status p-2 z-[2] backdrop-blur-xl">
+                        <div class="w-full h-1/4 sticky top-0 flex status p-2 z-[2] backdrop-blur-xl text-2">
                                 <span class="w-1/5">
                                         <img :src="currentChannel?.avatarUrl || '#'" alt="channel-cover" class="h-full aspect-square border-[8px] hover:border-primary duration-200 rounded-full">
                                 </span>
@@ -37,16 +37,17 @@ const { currentChannel } = storeToRefs(videoStore)
                                         </h2>
                                         
                                         <!-- Subscribers Amount -->
-                                        <h4 class="text-base-content my-2"> {{ currentChannel?.subscriberCount || 'wait'}} subscribers</h4>
-                                        <p class="text-xs text-base-content line-clamp-2">{{ currentChannel?.description || 'wait' }}</p>
+                                        <h4 class="text-2 my-2"> {{ currentChannel?.subscriberCount || 'wait'}} subscribers</h4>
+                                        <p class="text-xs text-2 line-clamp-2">{{ currentChannel?.description || 'wait' }}</p>
                                         
-                                        <!-- <button class="btn bg-base-content rounded-full px-12 text-base-200 hover:text-primary hover:border hover:border-primary-focus my-2" v-wave>SUBSCRIBE</button> -->
-                                        <SubscribeButtonVue :name="currentChannel?.name"
-                                        :id="currentChannel?.id"
-                                        :subs="currentChannel?.subscriberCount"
-                                        :thumbnail="currentChannel?.avatarUrl"
-                                        :verified="currentChannel?.verified"
-                                        :key="currentChannel?.id"
+                                        <!-- <button class="btn bg-2 rounded-full px-12 text-base-200 hover:text-primary hover:border hover:border-primary-focus my-2" v-wave>SUBSCRIBE</button> -->
+                                        <SubscribeButtonVue 
+                                                :name="currentChannel?.name"
+                                                :id="currentChannel?.id"
+                                                :subs="currentChannel?.subscriberCount"
+                                                :thumbnail="currentChannel?.avatarUrl"
+                                                :verified="currentChannel?.verified"
+                                                :key="currentChannel?.id"
                                         />
                                 </span>
                         </div>

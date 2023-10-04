@@ -33,7 +33,65 @@ module.exports = {
           "base-100": "#f1f0f0",
           "base-200": "#232322",
           "base-300": "#0f0e0e",
-        }
+        },
+        light: {
+          ...require('daisyui/src/theming/themes')["[data-theme=light]"],
+          "primary": "#fe0001",
+          "base-100": "#232322",
+
+        },
+        forest: {
+          ...require('daisyui/src/theming/themes')["[data-theme=forest]"],
+          // "base-100": "#e8ebe8",
+          "base-100": "#e0e0e0",
+          "base-200": "#030202",
+          "base-300": "#000000",
+
+        },
+        black: {
+          ...require('daisyui/src/theming/themes')["[data-theme=black]"],
+          // "base-100": "#e8ebe8",
+          "base-100": "#9c9c9c",
+          // "base-200": "#030202",
+          "base-200": "#242423",
+          "base-300": "#000000",
+
+        },
+        cyberpunk: {
+          ...require('daisyui/src/theming/themes')["[data-theme=cyberpunk]"],
+          "primary": "#c07eec",
+          // "base-100": "#75d1f0",
+          "base-100": "#423f00",
+          "base-200": "#dbcd00",
+          "base-300": "#b8ab00",
+
+        },
+        retro: {
+          ...require('daisyui/src/theming/themes')["[data-theme=retro]"],
+          // "primary": "#ef9995",
+          "primary": "#dc8850",
+          "base-100": "#2e282a",
+          "base-200": "#dbc99a",
+          "base-300": "#d4bf87",
+
+        },
+        coffee: {
+          ...require('daisyui/src/theming/themes')["[data-theme=coffee]"],
+          // "primary": "#ef9995",
+          // "primary": "#dc8850",
+          "base-100": "#dc944c",
+          "base-200": "#0c080c",
+          "base-300": "#000000",
+
+        },
+        autumn: {
+          ...require('daisyui/src/theming/themes')["[data-theme=autumn]"],
+          "primary": "#d75050",
+          "base-100": "#8c0327",
+          "base-200": "#e0e0e0",
+          "base-300": "#cfcfcf",
+
+        },
       }], // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
 
     // darkTheme: "dark", // name of one of the included themes for dark mode

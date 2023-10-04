@@ -42,11 +42,11 @@ function exportData()
         <!-- Clear History -->
         <div class="w-full grid grid-cols-2 gap-2 px-2">
             <div class="btn-group-horizontal my-2">
-                <button class="btn hover:btn-primary bg-opacity-50 w-1/2">
+                <button class="btn hover:btn-primary bg-opacity-50 w-1/2 text-2">
                     Clear history
                     <i class="ri-close-line"></i>
                 </button>
-                <button class="btn hover:btn-primary bg-opacity-50 w-1/2">
+                <button class="btn hover:btn-primary bg-opacity-50 w-1/2 text-2">
                     Clear Data
                     <i class="ri-close-line"></i>
                 </button>
@@ -54,13 +54,13 @@ function exportData()
 
             <div class="btn-group-horizontal my-2">
                 <!-- Import Data -->
-                <button class=" relative btn hover:btn-primary bg-opacity-50 w-1/2">
-                    <input type="file" class="absolute w-full h-full opacity-0" />
+                <button class=" relative btn hover:btn-primary bg-opacity-50 w-1/2 text-2">
+                    <input type="file" class="absolute w-full h-full opacity-0"/>
                     Import Data
                     <i class="ri-arrow-down-line"></i>
                 </button>
                 <!-- Export Data -->
-                <button @click="exportData" class="btn hover:btn-primary bg-opacity-50 w-1/2">
+                <button @click="exportData" class="btn hover:btn-primary bg-opacity-50 w-1/2 text-2">
                     Export Data
                     <i class="ri-arrow-up-line"></i>
                     <a ref="ex" href="" download="undefiend_data_export.txt"></a>

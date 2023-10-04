@@ -43,7 +43,7 @@ function changeCountry({ code, name })
                     country }}</strong>
         </SubSettingTitile>
 
-        <div class="collapse-content peer-checked:text-secondary-content grid grid-cols-8">
+        <div class="collapse-content text-2 grid grid-cols-8">
             <label v-for="c in countrieslist" class="line-clamp-1 p-1 mt-1 hover:bg-primary" @click.self="changeCountry(c)">
                 <input type="radio" name="country" class="radio radio-xs radio-primary hover:bg-base-content" />
                 {{ c.name }}

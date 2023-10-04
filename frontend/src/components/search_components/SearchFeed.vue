@@ -50,7 +50,7 @@ watch(() => searchSuggestions.value, () =>
 </script>
 
 <template>
-    <div class="drawer-side max-h-screen overflow-hidden">
+    <div class="drawer-side max-h-screen overflow-hidden text-base-100">
         <label for="my-drawer-4" class="drawer-overlay bg-primary" v-wave></label>
         <div class="p-4 w-[50vw] h-full overflow-hidden bg-base-300 bg-opacity-75 backdrop-blur pt-7">
             <!-- Sidebar content here -->
@@ -71,7 +71,7 @@ watch(() => searchSuggestions.value, () =>
 
 
             <!-- SEARCH SUGGESTIONS -->
-            <ul class="menu bg-base-content bg-opacity-10 rounded-box w-full overflow-hidden transition-all duration-500"
+            <ul class="menu bg-base-content bg-opacity-10 rounded-box w-full overflow-hidden transition-all duration-500 text-2"
                 :class="showSuggestions ? '' : 'h-0 w-0 p-0'">
                 <li v-for="s in searchSuggestions" class="w-full">
                     <a @click="setSearchString(s)">{{ s }}</a>

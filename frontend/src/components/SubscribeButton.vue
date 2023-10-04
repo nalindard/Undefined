@@ -63,8 +63,8 @@ function onElementVisibility() {
     <div v-element-visibility="onElementVisibility">
         <button 
             :key="key"
-            class="rounded-full px-12 text-base-200 hover:text-primary hover:border hover:border-primary-focus my-2 uppercase"
-            :class="hasSubscribed ? 'text-base-content border border-base-content bg-base-300 btn' : 'btn bg-base-content'"
+            class="rounded-full px-12 hover:text-primary hover:border hover:border-primary-focus my-2 uppercase"
+            :class="hasSubscribed ? 'text-2 border border-base-content bg-base-300 btn' : 'btn bg-base-content'"
             @click="subAction" v-wave>
                 {{ hasSubscribed ? 'UNSUBSCRIBE' : 'SUBSCRIBE' }}
         </button>

@@ -33,7 +33,7 @@ const h = ref(false)
             <img :src="data?.thumbnail || '#'" class="aspect-video w-full hover:cursor-pointer" alt="video-thumbnail"
                 loading="lazy" @click="proceed" />
             <!-- loading="lazy" @click="setCurrentVideo(data?.url || '')" /> -->
-            <h6 class="bg-base-300 text-base-content font-bold text-xs absolute right-1 bottom-1 p-1 px-2
+            <h6 class="bg-base-300 text-base-100 font-bold text-xs absolute right-1 bottom-1 p-1 px-2
              backdrop-blur rounded-sm" :class="shimmer ? 'shimmer' : ''">{{ secondsToTime(data?.duration) }}</h6>
         </div>
 
@@ -50,15 +50,15 @@ const h = ref(false)
             </span>
 
             <!-- Rest of details -->
-            <span class="w-full text-sm text-gray-400 px-2 pb-2">
-                <h2 class="line-clamp-2 font-semibold text-gray-50 mb-1" :class="shimmer ? 'shimmer' : ''">{{ data?.title ||
+            <span class="w-full text-sm text-base-content px-2 pb-2">
+                <h2 class="line-clamp-2 font-semibold text-base-100 mb-1" :class="shimmer ? 'shimmer' : ''">{{ data?.title ||
                     'title' }}</h2>
-                <h4 :class="shimmer ? 'shimmer' : ''" @mouseover="h = true">{{ data?.uploaderName || 'creator' }} <i
+                <h4 :class="shimmer ? 'shimmer' : ''" class="text-2" @mouseover="h = true">{{ data?.uploaderName || 'creator' }} <i
                         class="fa-solid fa-xs 🔒"
                         :class="data?.uploaderVerified ? 'fa-certificate' : '', h ? 'fa-spin' : ''"></i></h4>
                 <!-- {{ embedLink(data?.url || '') }} -->
 
-                <span class="w-full flex gap-2 text-xs mt-1">
+                <span class="w-full flex gap-2 text-xs mt-1 text-2">
                     <h4 :class="shimmer ? 'shimmer' : ''">{{ easyNumber(data?.views) || '8888' }} views</h4>
                     <h4 :class="shimmer ? 'shimmer' : ''">{{ data?.uploadedDate }}</h4>
                 </span>

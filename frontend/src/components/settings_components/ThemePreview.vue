@@ -14,7 +14,7 @@ const emits = defineEmits(['change'])
                 <div class="bg-base-300 col-start-1 row-span-2 row-start-1"></div>
                 <div class="bg-base-100 col-start-1 row-start-3"></div>
                 <div class="bg-base-200 col-span-4 col-start-2 row-span-3 row-start-1 flex flex-col gap-1 p-2">
-                    <div class="font-bold">{{ theme?.name || 'dark' }}</div>
+                    <div class="font-bold text-base-100">{{ theme?.name || 'dark' }}</div>
                     <div class="flex flex-wrap gap-1" data-svelte-h="svelte-1kw79c2">
                         <div class="bg-primary flex aspect-square w-5 items-center justify-center rounded lg:w-6">
                             <div class="text-primary-content text-sm font-bold">A</div>

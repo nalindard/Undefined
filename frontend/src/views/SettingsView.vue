@@ -22,7 +22,7 @@ function set() {
 </script>
 
 <template>
-  <div class="flex flex-col w-full h-full overflow-y-scroll overflow-x-hidden">
+  <div class="flex flex-col w-full h-full overflow-y-scroll overflow-x-hidden text-base-100">
     <PageGap />
 
     <!-- <div class=" pl-2">

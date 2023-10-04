@@ -15,7 +15,7 @@ import SubSettingTitile from '@cmp/settings_components/SubSettingTitile.vue';
             Change your Language
         </SubSettingTitile>
 
-        <div class="collapse-content">
+        <div class="collapse-content text-2">
             <div class="form-control">
                 <label class="label cursor-pointer">
                     <span class="label-text">Red pill</span>

@@ -50,7 +50,7 @@ function toggle_max()
 </script>
 
 <template>
-    <div class="w-full h-full min-h-6 flex justify-between items-center px-2" style="--wails-draggable:drag">
+    <div class="w-full h-full min-h-6 flex justify-between items-center px-2 text-base-100" style="--wails-draggable:drag">
         <!-- Start section -->
         <span class="w-1/4 pl-[0.7rem]">
             <!-- <h5>{{ d }}</h5> -->

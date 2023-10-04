@@ -5,7 +5,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="chat chat-start mb-4 text-base-content">
+    <div class="chat chat-start mb-4 text-2">
         <div class="chat-image avatar">
             <div class="w-10 rounded-full">
                 <img :src="data?.thumbnail || '#'" alt="commenter-avatar" loading="lazy" />

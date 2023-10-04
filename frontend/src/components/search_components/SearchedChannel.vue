@@ -32,15 +32,15 @@ const makeToChannel = () =>
         </div>
 
         <!-- The Rest -->
-        <div class="w-4/5 text-sm">
+        <div class="w-4/5 text-sm text-2">
             <!-- Name && Verification Status -->
-            <h2 class="text-4xl text-cyan-100 font-bold">{{ data?.name || 'loading...' }} <i class="fa-solid fa-xs 🔒"
+            <h2 class="text-4xl text-base-100 font-bold">{{ data?.name || 'loading...' }} <i class="fa-solid fa-xs 🔒"
                     :class="data?.uploaderVerified ? 'fa-certificate' : ''"></i></h2>
 
             <!-- Subscribers Amount -->
-            <h4 class="text-base-content my-2">{{ data?.subscribers }} subscribers</h4>
+            <h4 class="my-2">{{ data?.subscribers }} subscribers</h4>
 
-            <p class="text-xs text-base-content line-clamp-4">{{ data?.description }}</p>
+            <p class="text-xs line-clamp-4">{{ data?.description }}</p>
 
             <!-- <button class="btn bg-base-100 rounded-full px-12 text-base-300 hover:text-primary my-2" v-wave>SUBSCRIBE</button> -->
 

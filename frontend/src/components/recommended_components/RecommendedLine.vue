@@ -16,7 +16,7 @@ const tags = ref([
 </script>
 
 <template>
-    <div class="rounded-xl px-4 py-2 text-base-content bg-base-300">
+    <div class="rounded-xl px-4 py-2 text-2 bg-base-300">
         <!-- RECOMMENDED LIST LINE HERE---- -->
         <slot></slot>
         <!-- <VerticalScroller> -->

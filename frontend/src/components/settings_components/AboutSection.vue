@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2 class="text-4xl pl-2">About</h2>
-        <div class="text-base-content pt-7 text-xs pl-2">
+        <div class="text-2 pt-7 text-xs pl-2">
             <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil vero id provident, cupiditate minus
                 accusantium
