@@ -29,7 +29,7 @@ onMounted(() => {
         </div> -->
         <div class="w-full">
             <!-- <TrendingVideo v-if="feed.length < 1" v-for="x in Array.from(Array(16).keys())" :shimmer="true" /> -->
-            <transition-group tag="ul" name="list" appear
+            <transition-group tag="div" name="list" appear
                 class="w-full grid 2xl:grid-cols-5 lg:grid-cols-4 sm:grid-cols-2 md:sm:grid-cols-3 justify-items-center px-2 pt-4">
                 <!-- <TrendingVideo v-for="x in feed" :data="x" :showProfilePic="true" :key="x?.url" /> -->
                 <TrendingVideo v-for="video in trendingList" :data="video" :show-profile-pic="true" :key="video?.url"/>

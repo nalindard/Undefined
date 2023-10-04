@@ -47,7 +47,7 @@ function continueApp()
         </div>
 
         <!-- Navbar -->
-        <div class="w-16 absolute bottom-0 transition-all duration-500 bg-base-300 bg-opacity-50 z-40"
+        <div class="w-16 absolute bottom-0 transition-all duration-500 bg-base-300 bg-opacity-50 z-40 backdrop-blur-lg"
             :class="x_mode ? 'top-10' : 'top-0', splash_ ? 'opacity-0' : ''">
             <NavBar />
         </div>

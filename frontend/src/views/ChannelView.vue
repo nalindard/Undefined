@@ -3,6 +3,9 @@ import useVideoStore from '@str/video_store'
 import { storeToRefs } from 'pinia';
 import TabsViwer from '@cmp/tabs_components/TabsViwer.vue';
 import SubscribeButtonVue from '@cmp/SubscribeButton.vue';
+// import { useElementVisibility } from '@vueuse/core'
+
+// const s_btn = ref(null) 
 
 
 const videoStore = useVideoStore()
@@ -42,7 +45,9 @@ const { currentChannel } = storeToRefs(videoStore)
                                         :id="currentChannel?.id"
                                         :subs="currentChannel?.subscriberCount"
                                         :thumbnail="currentChannel?.avatarUrl"
-                                        :verified="currentChannel?.verified"/>
+                                        :verified="currentChannel?.verified"
+                                        :key="currentChannel?.id"
+                                        />
                                 </span>
                         </div>
                 </transition>

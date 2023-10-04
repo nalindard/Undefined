@@ -1,9 +1,14 @@
 <script setup>
-import InfiniteScroller from '../components/InfiniteScroller.vue';
+// import InfiniteScroller from '../components/InfiniteScroller.vue';
 import PageTitle from '@cmp/PageTitle.vue';
 
 
 const list = [
+    { name: "Low Fidelity music", link: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' },
+    { name: "Low Fidelity music", link: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' },
+    { name: "Low Fidelity music", link: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' },
+    { name: "Low Fidelity music", link: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' },
+    { name: "Low Fidelity music", link: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' },
     { name: "Low Fidelity music", link: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' },
     { name: "Low Fidelity music", link: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' },
     { name: "Low Fidelity music", link: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' },
@@ -19,7 +24,7 @@ const list = [
         <!-- <div class="w-full">
             <h2 class="title text-primary wanna_say_hi">Zen Zone...!</h2>
         </div> -->
-        <PageTitle class="w-full">
+        <PageTitle class="w-full self-start">
             <!-- Zen Zone -->
             Zen Mode
         </PageTitle>
@@ -49,7 +54,7 @@ const list = [
 
             <!-- Album -->
             <div
-                class="grid min-h-12 flex-grow bg-base-300 bg-opacity-25 border border-primary rounded-box place-items-center px-7">
+                class="grid min-h-12 flex-grow bg-base-300 bg-opacity-25 border border-primary rounded-box place-items-center px-7 overflow-y-scroll">
                 <div v-for="(l, id) in list" class="bg-base-200 bg-opacity-20 w-full px-4 py-2 rounded border border-primary" v-wave>
                     {{ l }} {{ id }}
                 </div>

@@ -54,7 +54,7 @@ onMounted(() => {
         <!-- <keep-alive> -->
             <div class="w-full">
                 <h4 v-show="feed.length < 1" class="text-xl pl-4">Sub some channels to have a feed !</h4>
-                <transition-group tag="ul" name="list" appear class="w-full grid 2xl:grid-cols-5 lg:grid-cols-4 sm:grid-cols-2 md:sm:grid-cols-3 justify-items-center px-2 pt-4">
+                <transition-group tag="div" name="list" appear class="w-full grid 2xl:grid-cols-5 lg:grid-cols-4 sm:grid-cols-2 md:sm:grid-cols-3 justify-items-center px-2 pt-4">
                     <TrendingVideo v-show="feed.length < 1" v-for="x in Array.from(Array(16).keys())" :shimmer="true" :key="Math.random()"/>
                     <TrendingVideo v-for="x in feed" :data="x" :showProfilePic="true" :key="Math.random()"/>
                 </transition-group>

@@ -1,6 +1,11 @@
 <script setup>
 import useUserStore from '@str/user_store'
 import { storeToRefs } from 'pinia';
+// import { useElementVisibility } from '@vueuse/core'
+import { vElementVisibility } from '@vueuse/components'
+
+// const btn = ref(null)
+const key = ref(1)
 
 const props = defineProps({
     name: String,
@@ -47,13 +52,21 @@ const subAction = () =>
     }
 }
 
+function onElementVisibility() {
+    key.value = key.value++
+}
+
 </script>
 
 <template>
-    <div>
-        <button
+    <!-- <div ref="btn" v-element-visibility="onElementVisibility"> -->
+    <div v-element-visibility="onElementVisibility">
+        <button 
+            :key="key"
             class="rounded-full px-12 text-base-200 hover:text-primary hover:border hover:border-primary-focus my-2 uppercase"
             :class="hasSubscribed ? 'text-base-content border border-base-content bg-base-300 btn' : 'btn bg-base-content'"
-            @click="subAction" v-wave>{{ hasSubscribed ? 'UNSUBSCRIBE' : 'SUBSCRIBE' }}</button>
+            @click="subAction" v-wave>
+                {{ hasSubscribed ? 'UNSUBSCRIBE' : 'SUBSCRIBE' }}
+        </button>
     </div>
 </template>

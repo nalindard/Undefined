@@ -118,7 +118,7 @@ watch(() => searchSuggestions.value, () =>
                         <h4>Views: {{  }}</h4>
                     </div> -->
 
-                    <transition-group tag="ul" name="list" appear>
+                    <transition-group tag="div" name="list" appear>
                         <SearchedVideo v-for="video in videos" :data="video" :key="video?.url" />
                     </transition-group>
                 </div>
