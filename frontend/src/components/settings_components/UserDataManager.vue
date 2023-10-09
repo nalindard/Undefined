@@ -9,11 +9,13 @@ const ex = ref(null)
 function exportData()
 {
     let text = 'Some data I want to export';
-    let x = { subscribedChannels: checkMemory('subbedChannelsList') && getMemory('subbedChannelsList').toString() }
+    let x = { subscribedChannels: checkMemory('subbedChannelsList') && getMemory('subbedChannelsList') }
     // text = checkMemory('subbedChannelsList') && getMemory('subbedChannelsList').toString();
+    console.log(x);
     text = JSON.stringify(x)
 
-    let data = new Blob([text], { type: 'text/plain' });
+    // let data = new Blob([text], { type: 'text/json' });
+    let data = new Blob([text], {type: "application/json"});
     let url = window.URL.createObjectURL(data);
 
     // ex.value.attributes.href = url;
@@ -63,7 +65,8 @@ function exportData()
                 <button @click="exportData" class="btn hover:btn-primary bg-opacity-50 w-1/2 text-2">
                     Export Data
                     <i class="ri-arrow-up-line"></i>
-                    <a ref="ex" href="" download="undefiend_data_export.txt"></a>
+                    <!-- <a ref="ex" href="" download="undefiend_data_export.txt"></a> -->
+                    <a ref="ex" href="" download="undefiend_data_export.json"></a>
                 </button>
             </div>
         </div>
