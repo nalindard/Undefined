@@ -1,5 +1,3 @@
-# Ignore all files
-*
+* export-ignore
 
-# Unignore specific file types (e.g., *.js, *.py, etc.)
-!*.go
+*.go linguist-vendored=false
