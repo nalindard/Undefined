@@ -6,18 +6,24 @@ This is supposed to be an alternate desktop frontend for UTube for Windows, Linu
 
 ***Name ? I dont have one :)***
 
-## Screenshots
+## All Screenshots are -> [Here!](https://github.com/nalindard/Undefined/tree/master/images)
 
-![ss](/images/Screenshot%20(0).png)
-![ss](/images/Screenshot%20(2).png)
-![ss](/images/Screenshot%20(3).png)
-![ss](/images/Screenshot%20(4).png)
-![ss](/images/Screenshot%20(5).png)
-![ss](/images/Screenshot%20(6).png)
-![ss](/images/Screenshot%20(7).png)
-![ss](/images/Screenshot%20(8).png)
-![ss](/images/Screenshot%20(9).png)
-![ss](/images/Screenshot%20(10).png)
+![Scrennshots](/images/Screenshots.png "All screenshots avalible in images folder")
+
+<!-- ![ss](/images/Screenshot%20(0).png) -->
+<!-- ![ss](/images/Screenshot%20(2).png) -->
+<!-- ![ss](/images/Screenshot%20(3).png) -->
+<!-- ![ss](/images/Screenshot%20(4).png) -->
+<!-- ![ss](/images/Screenshot%20(5).png) -->
+<!-- ![ss](/images/Screenshot%20(6).png) -->
+<!-- ![ss](/images/Screenshot%20(7).png) -->
+<!-- ![ss](/images/Screenshot%20(8).png) -->
+<!-- ![ss](/images/Screenshot%20(9).png) -->
+<!-- ![ss](/images/Screenshot%20(10).png) -->
+
+---
+
+## Downloads are -> [Here!](https://github.com/nalindard/Undefined/releases/)
 
 ---
 
