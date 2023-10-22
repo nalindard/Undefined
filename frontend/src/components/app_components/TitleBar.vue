@@ -9,7 +9,7 @@ const router = useRouter()
 
 const reloadIcon = ref(null)
 const d = ref()
-const fullScreen = ref(true)
+const fullScreen = ref(!true)
 onMounted(() =>
 {
     setInterval(() =>
@@ -75,7 +75,7 @@ function toggle_max()
                 <FullscreenIcon class="swap-off" v-if="fullScreen" />
                 <CloeFullscreenIcon class="swap-on" v-else />
             </button>
-            <button @click="cls" class="px-2 scale-90 h-full grid place-items-center">
+            <button @click="cls" class="px-2 scale-90 h-full grid place-items-center z-[7200]">
                 <ExitIcon />
             </button>
         </span>

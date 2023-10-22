@@ -11,8 +11,8 @@ const props = defineProps({
     <div class="w-full min-h-64 overflow-y-scroll">
         <!-- {{ data || 'Nothing yet' }}      -->
         <div v-if="content === 'videos' || null" class="">
-            <transition-group tag="ul" name="list" appear
-                class="w-full grid  2xl:grid-cols-5 lg:grid-cols-4 sm:grid-cols-2 md:sm:grid-cols-3 place-items-center px-2 pt-4">
+            <transition-group tag="div" name="list" appear
+                class="w-full grid 2xl:grid-cols-5 lg:grid-cols-4 sm:grid-cols-2 md:sm:grid-cols-3 justify-items-center px-2 pt-4">
                 <TrendingVideo :data="vid" v-for="vid in data" :show-profile-pic="false" :key="vid?.url" />
                 <!-- <TrendingVideo v-for="x in feed" :data="x" :showProfilePic="true" :key="x?.url"/> -->
             </transition-group>

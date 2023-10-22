@@ -19,7 +19,7 @@ const proceed = () =>
         <div class=" flex flex-col justify-center items-center">
             <!-- Logo -->
             <div>
-                <h2 class="uppercase font-extrabold">{{ name || 'undifiend' }}</h2>
+                <h2 class="uppercase font-extrabold">{{ name || 'undefined' }}</h2>
             </div>
 
             <!-- Continue -->

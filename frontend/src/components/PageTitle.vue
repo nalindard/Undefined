@@ -1,7 +1,7 @@
 <template>
     <transition name="switch" mode="out-in" appear>
         <!-- <slot> -->
-        <h2 class="title bg-base-300 text-base-100 hover:bg-opacity-20 duration-200 sticky top-0 py-7 backdrop-blur-xl z-[2] px-2" v-wave>
+        <h2 class="title bg-base-300 text-base-100 hover:bg-opacity-20 duration-200 py-7 backdrop-blur-xl z-[2] px-2" v-wave>
             <slot>Page Title</slot>
         </h2>
         <!-- </slot> -->

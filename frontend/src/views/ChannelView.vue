@@ -26,7 +26,7 @@ const { currentChannel } = storeToRefs(videoStore)
 
                 <!-- Status section -->
                 <transition name="switch" mode="out-in" appear>
-                        <div class="w-full h-1/4 sticky top-0 flex status p-2 z-[2] backdrop-blur-xl text-2">
+                        <div class="w-full h-1/4 flex status p-2 z-[2] backdrop-blur-xl text-2">
                                 <span class="w-1/5">
                                         <img :src="currentChannel?.avatarUrl || '#'" alt="channel-cover" class="h-full aspect-square border-[8px] hover:border-primary duration-200 rounded-full">
                                 </span>
